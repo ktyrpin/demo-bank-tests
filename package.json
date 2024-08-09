@@ -1,0 +1,19 @@
+{
+	"name": "demo-bank-tests",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "npx playwright test",
+		"test:headed": "npx playwright test --headed",
+		"test:pulpit:headed": "npm run test tests/pulpit.spec.ts -- --headed",
+		"test:login": "npx playwright test --grep \"@login\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@playwright/test": "^1.45.0",
+		"@types/node": "^20.14.9"
+	}
+}
