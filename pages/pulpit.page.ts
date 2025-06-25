@@ -3,6 +3,7 @@ import { SideMenuComponent } from '../components/side-menu.component';
 
 export class PulpitPage {
 	sideMenuComponent: SideMenuComponent;
+	userName: Locator;
 
 	transferReceiver: Locator;
 	transferAmount: Locator;
@@ -22,6 +23,7 @@ export class PulpitPage {
 
 	constructor(private page: Page) {
 		this.sideMenuComponent = new SideMenuComponent(this.page);
+		this.userName = this.page.getByTestId('user-name');
 
 		this.transferReceiver = this.page.locator('#widget_1_transfer_receiver');
 		this.transferAmount = this.page.locator('#widget_1_transfer_amount');
