@@ -22,7 +22,7 @@ test.describe('Payment tests', () => {
 
 	test(
 		'simple payment',
-		{ tag: ['@payment', '@integration'], annotation: { type: 'documentation', description: '' } },
+		{ tag: ['@payment', '@integration'], annotation: { type: 'documentation' } },
 		async ({ page }) => {
 			// Arrange
 			const transferReceiver = paymentData.transferReceiver;

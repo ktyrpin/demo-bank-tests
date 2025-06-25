@@ -1,26 +1,44 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { SideMenuComponent } from '../components/side-menu.component';
 
 export class PulpitPage {
-	constructor(private page: Page) {}
+	sideMenuComponent: SideMenuComponent;
 
-	sideMenuComponent = new SideMenuComponent(this.page);
+	transferReceiver: Locator;
+	transferAmount: Locator;
+	transferTitle: Locator;
 
-	transferReceiver = this.page.locator('#widget_1_transfer_receiver');
-	transferAmount = this.page.locator('#widget_1_transfer_amount');
-	transferTitle = this.page.locator('#widget_1_transfer_title');
+	closeButton: Locator;
+	showMessage: Locator;
 
-	closeButton = this.page.getByTestId('close-button');
-	showMessage = this.page.locator('#show_messages');
+	topUpReceiver: Locator;
+	topUpAmount: Locator;
+	topUpAgreement: Locator;
 
-	topUpReceiver = this.page.locator('#widget_1_topup_receiver');
-	topUpAmount = this.page.locator('#widget_1_topup_amount');
-	topUpAgreement = this.page.locator('#uniform-widget_1_topup_agreement span');
+	paymentButton: Locator;
+	moneyValue: Locator;
 
-	paymentButton = this.page.getByRole('button', { name: 'wykonaj' });
-	moneyValue = this.page.locator('#money_value');
+	topUpExecuteButton: Locator;
 
-	topUpExecuteButton = this.page.getByRole('button', { name: 'doładuj telefon' });
+	constructor(private page: Page) {
+		this.sideMenuComponent = new SideMenuComponent(this.page);
+
+		this.transferReceiver = this.page.locator('#widget_1_transfer_receiver');
+		this.transferAmount = this.page.locator('#widget_1_transfer_amount');
+		this.transferTitle = this.page.locator('#widget_1_transfer_title');
+
+		this.closeButton = this.page.getByTestId('close-button');
+		this.showMessage = this.page.locator('#show_messages');
+
+		this.topUpReceiver = this.page.locator('#widget_1_topup_receiver');
+		this.topUpAmount = this.page.locator('#widget_1_topup_amount');
+		this.topUpAgreement = this.page.locator('#uniform-widget_1_topup_agreement span');
+
+		this.paymentButton = this.page.getByRole('button', { name: 'wykonaj' });
+		this.moneyValue = this.page.locator('#money_value');
+
+		this.topUpExecuteButton = this.page.getByRole('button', { name: 'doładuj telefon' });
+	}
 
 	async executeQuickPayment(receiverId: string, transferAmount: string, transferTitle: string): Promise<void> {
 		await this.transferReceiver.selectOption(receiverId);
